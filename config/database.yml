@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: docker_rails_development
+  username: <%= ENV['DBUSER'] %>
+  password: <%= ENV['DBPASS'] %>
+  host: <%= ENV['DBHOST'] %>
+
+production:
+  <<: *default
+  database: docker_rails_production
+  username: <%= ENV['DBUSER'] %>
+  password: <%= ENV['DBPASS'] %>
+  host: <%= ENV['DBHOST'] %>
